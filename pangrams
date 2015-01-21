@@ -1,0 +1,20 @@
+import sys
+
+def main():
+	lettersDict = {}
+	x = sys.stdin.readlines()
+	splittedLine = x[0].split()
+	for i in range(0, len(splittedLine)):
+		a = splittedLine[i]
+		for j in range(0, len(a)):
+			lettersDict[a[j].lower()] = 0
+	numberOfUniqueLetters = len(lettersDict.keys())
+	if numberOfUniqueLetters == 26:
+		print "pangram"
+	else: 
+		print "not pangram"
+
+main()
+
+
+
