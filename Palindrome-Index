@@ -1,0 +1,36 @@
+import sys
+
+def isPalindrome(string):
+    isP = 1
+    for i in range(0, (len(string)/2)):
+        if (string[i] != string[(len(string)-1)-i]):
+            isP = 0
+            break
+    if (isP == 0):
+        return 0
+    else:
+        return 1
+    
+def RemoveCharacterFromString(y):
+    WordsList = []
+    for j in range(0, len(y)):
+        part1 = y[0:j]
+        part2 = y[(j+1):len(y)]
+        x = part1 + part2
+        WordsList.append(x)
+    return WordsList
+
+def main():
+    x1 = sys.stdin.readlines()
+    x2 = int(x1[0].strip('\n'))
+    for i in range(1, len(x1)):
+        x3 = x1[i].strip('\n')
+        if isPalindrome(x3):
+            print -1
+            break 
+        if not(isPalindrome(x3)):
+                x4 = RemoveCharacterFromString(x3)
+                for k in range(0, len(x4)):
+                    if isPalindrome(x4[k]):
+                        print k         
+main()
