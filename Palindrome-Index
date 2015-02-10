@@ -1,0 +1,45 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+    public static boolean isPalindrome(String str) {
+        int i;
+        for(i = 0; i <= (str.length()/2); i++) {
+            if(str.charAt(i) != str.charAt(str.length()-1-i)) {
+                return false;
+            }
+        }
+        return true;
+	}
+
+
+    public static void main(String[] args) {
+        String temp;
+        StringBuffer sb;
+        Scanner scan = new Scanner(System.in);
+		String reps = scan.nextLine();
+		String word;
+        while(scan.hasNextLine()) {
+            word = scan.nextLine();
+            if(isPalindrome(word)) {
+                System.out.println("-1");
+            }
+            else {
+                sb = new StringBuffer(word);
+                for(int i = 0; i < sb.length(); i++) {
+                    temp = sb.toString(); 
+                    if(isPalindrome(sb.deleteCharAt(i).toString())) {
+                        System.out.println(i);
+                        break;
+                    }
+                    sb = new StringBuffer(temp);
+                }
+            }
+        }
+    }
+}
+    
