@@ -1,0 +1,60 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.lang.*;
+
+public class Solution {
+    
+    public static String removeDuplicates(String s)
+	{
+  	StringBuilder sb = new StringBuilder();
+  	Set<Character> seen = new HashSet<Character>();
+  	char c;
+  	for(int i = 0; i < s.length(); ++i)
+  	{
+  		c = s.charAt(i);
+  		if(!seen.contains(c))
+  		{
+  			seen.add(c);
+  			sb.append(c);
+  		}
+  	}
+  	return sb.toString();
+	}
+
+    
+   public static Map<Character, Integer> createDict() {
+    Map<Character, Integer> dict = new HashMap<Character, Integer>();
+    dict.put('a', 0); dict.put('b', 0); dict.put('c', 0); dict.put('d', 0); dict.put('e', 0); dict.put('f', 0); 
+    dict.put('g', 0); dict.put('h', 0); dict.put('i', 0); dict.put('j', 0); dict.put('k', 0); dict.put('l', 0);
+    dict.put('m', 0); dict.put('n', 0); dict.put('o', 0); dict.put('p', 0); dict.put('q', 0); dict.put('r', 0);
+    dict.put('s', 0); dict.put('t', 0); dict.put('u', 0); dict.put('v', 0); dict.put('w', 0); dict.put('x', 0);
+    dict.put('y', 0); dict.put('z', 0); 
+    return dict;
+   }
+        
+    public static void main(String[] args) {
+        int numberOfGems = 0;
+        Map<Character, Integer> dict = createDict();
+        Scanner scan = new Scanner(System.in);
+        String word;
+        int numberOfWords = Integer.parseInt(scan.nextLine());
+        while(scan.hasNextLine()) {
+            word = removeDuplicates(scan.nextLine());
+            for(int i = 0; i < word.length(); i++) {
+                dict.put(word.charAt(i), dict.get(word.charAt(i)) + 1);
+            }
+        }
+        for(Character key : dict.keySet()) {
+            if(dict.get(key) == numberOfWords) {
+                numberOfGems++;
+            }
+            //System.out.print(key + " " + dict.get(key));
+            //System.out.println();    
+        }
+        System.out.println(numberOfGems);
+    }
+    
+}
